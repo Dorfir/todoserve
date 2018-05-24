@@ -20,7 +20,7 @@ var Todo = {
     addTodo: function(Todo, callback) {
         return db.query(
             "INSERT INTO todo (title, beginDate, endDate) VALUES (?, ?, ?);",
-            [Todo.title, Todo.debut, Todo.fin], callback
+            [Todo.title, Todo.beginDate, Todo.endDate], callback
         );
     },
 
@@ -31,7 +31,7 @@ var Todo = {
     updateTodo: function (id, Todo, callback) {
         return db.query(
             "UPDATE todo SET title=?, beginDate=?, endDate=? WHERE idTodo=?;",
-            [Todo.title, Todo.debut, Todo.fin, id],
+            [Todo.title, Todo.beginDate, Todo.endDate, id],
             callback
         );
     },

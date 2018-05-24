@@ -28,11 +28,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Requirements pour API
+var cors = require('cors');
 app.use(cors());
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-var cors = require('cors');
+
 var Todos = require('./routes/todos');
 app.use('/Todos', Todos);
 
