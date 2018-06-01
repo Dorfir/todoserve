@@ -9,10 +9,11 @@ var Todo = require('../models/Todo');
 router.get(
     '/:id?',
     function(request, response, next) {
-        // Fonction appelée apres decodage de l'uri (http://localhost:300/10)
-        if (request.param.id) {
+        // Fonction appelée apres decodage de l'uri (http://localhost:3000/Todos/10)
+        
+        if (request.params.id) {
             // Un parametre est passé
-            Todo.getTodoById(request.param.id, function(err, rows) {
+            Todo.getTodoById(request.params.id, function(err, rows) {
                 if (err) {
                     response.json(err);
                 } else {
@@ -44,10 +45,10 @@ router.post(
                     if (err) {
                         res.json(err);
                     } else {
-                        response.json(row);
+                        res.json(row);
                     }
                 });
-                res.send("Enregistrement effectué");
+            
             }
         });
     }
@@ -73,7 +74,7 @@ router.put(
         if (err) {
             res.json(err);
         } else {
-            req.body.id = req.params.id;
+            req.body.idTodo = req.params.id;
             res.json(req.body);
         }
       });
